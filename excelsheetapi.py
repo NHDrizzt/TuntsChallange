@@ -3,6 +3,8 @@ import math
 import time
 from oauth2client.service_account import ServiceAccountCredentials
 
+#Hello Tunts team, this is my Tunts Challenge submission in python.
+
 #Connection with Google Sheets API
 scope = ['https://www.googleapis.com/auth/spreadsheets','https://www.googleapis.com/auth/drive.file', 'https://www.googleapis.com/auth/drive',]
 creds = ServiceAccountCredentials.from_json_keyfile_name('key.json', scope)
@@ -27,13 +29,13 @@ def main():
 
         avg = (p1+p2+p3)/3
 
-        #Verifie the abscense of the student
+        #Verify the abscense of the student
         if(int(gs.cell(i,y).value) > abscence):
             gs.update_cell(i,y+4, "Reprovado por falta")
             gs.update_cell(i, y+5, 0)
             print("Aluno: " + student + " Reprovado por falta")
         else: 
-            #Verifie the average of the student and set if he/she failed(<50), needs final exam(50-70), or is approved(>70) in the course
+            #Verify the average of the student and set if he/she failed(<50), needs final exam(50-70), or is approved(>70) in the course
             if(avg<50):
                 gs.update_cell(i, y+4, "Reprovado por nota")
                 gs.update_cell(i, y+5, 0)
